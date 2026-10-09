@@ -45,12 +45,17 @@ html {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
   min-height: 100vh;
   background-color: var(--bg-studio);
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
   position: relative;
 }
 
@@ -1663,20 +1668,42 @@ body {
     display: none;
   }
   .poster-frame {
-    height: auto;
-    aspect-ratio: 16 / 9;
+    height: 75vh;
+    min-height: 540px;
+    max-height: 660px;
+    aspect-ratio: auto;
+  }
+  .poster-image {
+    object-position: center 25%;
   }
   .corner-tl {
-    top: 5%;
-    left: 4%;
+    top: 24px;
+    left: 20px;
+    max-width: 65%;
   }
   .corner-tr {
-    top: 5%;
-    right: 4%;
+    top: 24px;
+    right: 20px;
+    max-width: 32%;
+    text-align: right;
   }
   .corner-bl {
-    bottom: 5%;
-    left: 4%;
+    bottom: 24px;
+    left: 20px;
+    right: 20px;
+    width: calc(100% - 40px);
+  }
+  .hero-action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    width: 100%;
+  }
+  .hero-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 0.82rem;
   }
   .about-story-card {
     padding: 24px 20px;
@@ -1713,104 +1740,488 @@ body {
   }
 }
 
-@media (max-width: 680px) {
-  .hero-action-buttons {
+@media (max-width: 600px) {
+  /* Site Header Mobile */
+  .nav-container {
+    padding: 10px 14px;
+  }
+  .logo-name {
+    font-size: 1.18rem;
+  }
+  .logo-tag {
+    font-size: 0.62rem;
+    letter-spacing: 1.2px;
+    padding-left: 6px;
+  }
+  .availability-badge {
+    padding: 5px 9px;
+    gap: 6px;
+  }
+  .avail-text {
+    font-size: 0.62rem;
+    letter-spacing: 0.6px;
+  }
+  .nav-actions {
     gap: 8px;
   }
-  .hero-btn {
-    padding: 7px 14px;
+  .nav-actions .btn-sm {
+    padding: 6px 12px;
     font-size: 0.72rem;
-    gap: 5px;
   }
-}
 
-@media (max-width: 600px) {
+  /* Hero Section & Poster Frame Mobile */
+  .poster-stage {
+    padding: 0;
+    width: 100%;
+  }
   .poster-frame {
-    height: auto;
-    aspect-ratio: 16 / 9;
+    height: 76vh;
+    min-height: 520px;
+    max-height: 640px;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  .poster-image {
+    object-position: center 22%;
+  }
+  .corner-tl {
+    top: 18px;
+    left: 16px;
+    max-width: 66%;
+    gap: 3px;
+  }
+  .tag-red {
+    font-size: 0.68rem;
+    letter-spacing: 1.4px;
+  }
+  .quote-text .q-line1,
+  .quote-text .q-line2 {
+    font-size: 1.15rem;
+    letter-spacing: 0.6px;
+    line-height: 1.15;
+  }
+  .corner-tr {
+    top: 18px;
+    right: 16px;
+    max-width: 32%;
+    text-align: right;
+    align-items: flex-end;
+    gap: 2px;
+  }
+  .corner-tr .tag-red {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .author-subtitle {
+    font-size: 0.52rem;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+  }
+  .corner-bl {
+    bottom: 18px;
+    left: 14px;
+    right: 14px;
+    width: calc(100% - 28px);
+  }
+  .hero-action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+  }
+  .hero-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 11px 12px;
+    font-size: 0.76rem;
+    letter-spacing: 0.6px;
+    border-radius: 999px;
+  }
+
+  /* Tools Marquee Mobile */
+  .tools-marquee-bar {
+    padding: 11px 0;
+    margin-bottom: 26px;
+  }
+  .marquee-label {
+    padding: 0 14px;
+    font-size: 0.66rem;
+    letter-spacing: 1.6px;
+  }
+  .marquee-track {
+    gap: 22px;
+  }
+  .marquee-item {
+    font-size: 0.86rem;
+    letter-spacing: 0.8px;
+    gap: 6px;
+  }
+
+  /* Universal Section Containers Mobile */
+  .about-section,
+  .skills-section,
+  .services-section,
+  .projects-section,
+  .testimonials-section,
+  .contact-section {
+    padding: 0 10px;
+    margin: 0 auto 30px;
+    width: 100%;
+  }
+  .about-container,
+  .skills-container,
+  .services-container,
+  .projects-container,
+  .testimonials-container,
+  .contact-container {
+    padding: 22px 14px;
+    border-radius: 12px;
+    width: 100%;
+  }
+
+  /* Section Headers Mobile */
+  .about-header,
+  .skills-header,
+  .services-header,
+  .projects-header,
+  .testimonials-header,
+  .contact-header {
+    margin-bottom: 20px;
+  }
+  .about-badge,
+  .skills-badge,
+  .projects-badge,
+  .testimonials-badge,
+  .contact-badge {
+    padding: 3px 10px;
+    margin-bottom: 8px;
+  }
+  .about-eyebrow,
+  .skills-eyebrow,
+  .projects-eyebrow,
+  .testimonials-eyebrow,
+  .contact-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+  }
+  .about-main-title,
+  .skills-main-title,
+  .services-main-title,
+  .projects-main-title,
+  .testimonials-main-title,
+  .contact-main-title {
+    font-size: clamp(1.72rem, 7.6vw, 2.2rem);
+    letter-spacing: 0.8px;
+    line-height: 1.08;
+    margin-bottom: 8px;
+  }
+  .about-lead {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding-left: 12px;
+    margin-bottom: 16px;
+    border-left-width: 2.5px;
   }
   .about-story-card {
-    padding: 20px 16px;
+    padding: 16px 14px;
+    gap: 12px;
+    border-radius: 10px;
   }
-  .about-container {
-    padding: 24px 16px;
+  .about-story-card p {
+    font-size: 0.88rem;
+    line-height: 1.65;
   }
-  .skills-container {
-    padding: 24px 16px;
+  .skills-sub-desc,
+  .projects-sub-desc,
+  .testimonials-sub-desc,
+  .contact-sub-desc {
+    font-size: 0.86rem;
+    line-height: 1.5;
+    margin-top: 4px;
   }
+
+  /* Skills Grid Mobile */
   .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .skill-card {
+    padding: 16px 14px;
+    border-radius: 10px;
+  }
+  .skill-name {
+    font-size: 1.35rem;
+    line-height: 1.08;
+    margin-bottom: 6px;
+  }
+  .skill-brief {
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
+  /* Services Grid Mobile */
+  .services-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
-  .skill-card {
+  .service-card {
     padding: 18px 16px;
+    border-radius: 10px;
   }
-  .services-container {
-    padding: 24px 16px;
+  .service-title {
+    font-size: 1.45rem;
+    margin-bottom: 6px;
   }
-  .projects-container {
-    padding: 24px 16px;
+  .service-desc {
+    font-size: 0.86rem;
+    line-height: 1.55;
   }
+
+  /* Projects Grid & Video Players Mobile */
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
+  .project-card {
+    border-radius: 12px;
+  }
+  .project-card.featured-project {
+    grid-template-columns: 1fr;
+  }
+  .project-video-wrap {
+    aspect-ratio: 9 / 16;
+    max-height: 480px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 11px 11px 0 0;
+  }
+  .project-card.featured-project.widescreen-spotlight .project-video-wrap {
+    aspect-ratio: 16 / 9;
+    max-height: 260px;
+  }
   .project-content {
-    padding: 18px 16px 20px;
+    padding: 16px 14px 18px;
+  }
+  .project-card.featured-project .project-content {
+    padding: 16px 14px 18px;
   }
   .project-title {
-    font-size: 1.45rem;
+    font-size: 1.38rem;
+    margin-bottom: 6px;
+  }
+  .project-desc {
+    font-size: 0.84rem;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .project-tools {
+    gap: 6px;
+    padding-top: 10px;
+  }
+  .p-tool {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+  }
+  .projects-drive-cta {
+    margin-top: 22px;
+  }
+  .drive-cta-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 1.05rem;
+  }
+
+  /* Testimonials Mobile */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .testimonial-card {
+    padding: 18px 16px;
+    border-radius: 10px;
+    gap: 12px;
+  }
+  .testimonial-text {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  .testimonial-card.featured-card .testimonial-text {
+    font-size: 0.92rem;
+  }
+  .testimonial-author {
+    gap: 12px;
+    padding-top: 12px;
+  }
+  .author-avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 1.05rem;
   }
   .author-name {
     font-size: 1.3rem;
   }
-  .contact-value {
-    font-size: 1.15rem;
+  .author-loc {
+    font-size: 0.72rem;
   }
-  .contact-email-text {
-    font-size: 0.85rem;
-  }
-  .skills-container {
-    padding: 24px 16px;
-  }
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .service-card {
-    padding: 22px 20px;
-  }
-  .service-title {
-    font-size: 1.45rem;
-  }
-  .skill-name {
-    font-size: 1.3rem;
-  }
-  .service-desc {
-    font-size: 0.88rem;
-  }
-  .testimonials-container {
-    padding: 24px 16px;
-  }
-  .testimonial-card {
-    padding: 20px 18px;
-  }
-  .testimonial-card.featured-card .testimonial-text {
-    font-size: 0.96rem;
-  }
-  .contact-container {
-    padding: 24px 16px;
-  }
+
+  /* Contact Grid Mobile */
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 12px;
   }
   .contact-card {
-    padding: 20px 18px;
+    padding: 18px 16px;
+    border-radius: 10px;
   }
+  .contact-card-top {
+    margin-bottom: 14px;
+  }
+  .contact-icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  .contact-card-content {
+    margin-bottom: 14px;
+  }
+  .contact-label {
+    font-size: 0.68rem;
+    letter-spacing: 1.2px;
+    margin-bottom: 6px;
+  }
+  .contact-value {
+    font-size: clamp(1.05rem, 4.4vw, 1.25rem);
+    line-height: 1.2;
+  }
+  .contact-email-text {
+    font-size: clamp(0.72rem, 3.3vw, 0.86rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.2px;
+  }
+  .contact-hint {
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+  .contact-card-action {
+    font-size: 0.76rem;
+    padding-top: 12px;
+  }
+  .contact-card-dual-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 12px;
+  }
+  .contact-action-btn {
+    padding: 8px 10px;
+    font-size: 0.74rem;
+  }
+
+  /* Footer Mobile */
   .hero-footer {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 8px;
+    padding: 18px 14px 28px;
+    font-size: 0.72rem;
+  }
+  .footer-text-left {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav-container {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+  .logo-name {
+    font-size: 1.08rem;
+  }
+  .logo-tag {
+    font-size: 0.58rem;
+  }
+  .avail-text {
+    display: none;
+  }
+  .availability-badge {
+    padding: 5px 6px;
+  }
+  .nav-actions .btn-sm {
+    padding: 5px 10px;
+    font-size: 0.68rem;
+  }
+
+  .poster-frame {
+    height: 78vh;
+    min-height: 480px;
+    max-height: 580px;
+  }
+  .corner-tl {
+    top: 14px;
+    left: 12px;
+    max-width: 65%;
+  }
+  .corner-tl .tag-red {
+    font-size: 0.62rem;
+  }
+  .quote-text .q-line1,
+  .quote-text .q-line2 {
+    font-size: 1.05rem;
+  }
+  .corner-tr {
+    top: 14px;
+    right: 12px;
+    max-width: 35%;
+  }
+  .corner-tr .tag-red {
+    font-size: 0.58rem;
+  }
+  .author-subtitle {
+    font-size: 0.48rem;
+  }
+  .corner-bl {
+    bottom: 14px;
+    left: 10px;
+    right: 10px;
+    width: calc(100% - 20px);
+  }
+  .hero-btn {
+    padding: 10px 8px;
+    font-size: 0.72rem;
+    gap: 4px;
+  }
+
+  .about-section,
+  .skills-section,
+  .services-section,
+  .projects-section,
+  .testimonials-section,
+  .contact-section {
+    padding: 0 8px;
+    margin: 0 auto 24px;
+  }
+  .about-container,
+  .skills-container,
+  .services-container,
+  .projects-container,
+  .testimonials-container,
+  .contact-container {
+    padding: 18px 10px;
+  }
+  .about-main-title,
+  .skills-main-title,
+  .services-main-title,
+  .projects-main-title,
+  .testimonials-main-title,
+  .contact-main-title {
+    font-size: 1.62rem;
+  }
+  .contact-email-text {
+    font-size: clamp(0.66rem, 3.1vw, 0.76rem);
   }
 }
