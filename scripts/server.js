@@ -2,7 +2,9 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const ROOT = path.join(__dirname, '..');
+
 const MIME = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -23,10 +25,10 @@ const server = http.createServer((req, res) => {
   } catch (e) {}
 
   if (reqPath === '/') reqPath = '/index.html';
-  const filePath = path.join(__dirname, reqPath);
+  const filePath = path.join(ROOT, reqPath);
 
-  // Security check: ensure path is within __dirname
-  if (!filePath.startsWith(__dirname)) {
+  // Security check: ensure path is within ROOT
+  if (!filePath.startsWith(ROOT)) {
     res.writeHead(403);
     res.end('Forbidden');
     return;

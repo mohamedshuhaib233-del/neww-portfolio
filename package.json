@@ -1,5 +1,9 @@
 {
-  "dependencies": {
-    "sharp": "^0.35.5"
+  "name": "neww-portfolio",
+  "version": "1.0.0",
+  "description": "Mohamed Shuhaib — Official Portfolio",
+  "scripts": {
+    "start": "node scripts/server.js",
+    "dev": "node scripts/server.js"
   }
 }
